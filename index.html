@@ -5,61 +5,99 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Newland Roleplay - SAMP Server</title>
     <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #8c0000, #cc0000); /* Merah tua ke merah terang */
-            color: #ffffff;
+        * {
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Background Video */
+        .video-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -2;
+        }
+
+        /* Overlay Merah-Putih Halus */
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(139, 0, 0, 0.7), rgba(204, 0, 0, 0.6));
+            z-index: -1;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #ffffff;
             line-height: 1.6;
         }
+
         header {
             text-align: center;
             padding: 2rem 1rem;
-            background-color: #ffffff; /* Putih */
-            color: #cc0000; /* Merah */
+            background-color: rgba(255, 255, 255, 0.95);
+            color: #cc0000;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            position: relative;
+            z-index: 10;
         }
+
         h1 {
             font-size: 2.8rem;
             margin: 0;
             color: #cc0000;
-            text-shadow: none;
         }
+
         .container {
             max-width: 900px;
             margin: 2rem auto;
             padding: 0 1.5rem;
+            position: relative;
+            z-index: 10;
         }
+
         .card {
-            background: rgba(255, 255, 255, 0.92); /* Latar putih transparan */
+            background: rgba(255, 255, 255, 0.92);
             border-radius: 12px;
             padding: 1.5rem;
             margin-bottom: 1.5rem;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-            color: #000; /* Teks hitam agar kontras di latar putih */
+            color: #000;
             border: 2px solid #cc0000;
         }
+
         .card h2 {
             color: #8c0000;
             margin-top: 0;
             border-bottom: 2px solid #cc0000;
             padding-bottom: 0.5rem;
         }
+
         ul {
             padding-left: 1.5rem;
         }
+
         li {
             margin-bottom: 0.4rem;
         }
+
         .highlight {
             color: #cc0000;
             font-weight: bold;
         }
+
         .link-box {
             text-align: center;
             margin-top: 1.5rem;
         }
+
         .link-box a {
             display: inline-block;
             background: #cc0000;
@@ -72,30 +110,66 @@
             transition: transform 0.2s, box-shadow 0.2s;
             border: 2px solid #ffffff;
         }
+
         .link-box a:hover {
             transform: scale(1.05);
             box-shadow: 0 0 15px rgba(255, 255, 255, 0.8);
             background: #8c0000;
         }
+
         footer {
             text-align: center;
             padding: 1.5rem;
             color: #fff;
             font-size: 0.95rem;
-            background: rgba(0, 0, 0, 0.3);
+            background: rgba(0, 0, 0, 0.4);
+            position: relative;
+            z-index: 10;
+        }
+
+        /* Musik Control */
+        .music-control {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 100;
+        }
+
+        .music-btn {
+            background: #cc0000;
+            color: white;
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            font-size: 18px;
+            cursor: pointer;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.4);
         }
     </style>
 </head>
 <body>
+
+    <!-- Background Video -->
+    <video autoplay muted loop class="video-bg" playsinline>
+        <source src="background.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+    <!-- Overlay Merah-Putih -->
+    <div class="overlay"></div>
+
+    <!-- Header -->
     <header>
         <h1>NEWLAND ROLEPLAY</h1>
         <p>Server SAMP Roleplay dengan sistem realistis & komunitas aktif</p>
     </header>
 
+    <!-- Konten -->
     <div class="container">
         <div class="card">
             <h2>⚙️ Informasi Umum</h2>
-            <p><span class="highlight">REGISTER</span> : UCP<br>
+            <p><span class="highlight">REGISTER</span> : UCP (User Control Panel)<br>
             <span class="highlight">KOMUNIKASI</span> : VOICE ONLY<br>
             <span class="highlight">MATA UANG</span> : DOLAR<br>
             <span class="highlight">PLATFORM</span> : ANDROID & PC SUPPORT</p>
@@ -155,9 +229,41 @@
         </div>
     </div>
 
+    <!-- Audio Player (hidden, controlled by button) -->
+    <audio id="bgMusic" loop>
+        <source src="music.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <!-- Tombol Play Musik -->
+    <div class="music-control">
+        <button class="music-btn" onclick="toggleMusic()">▶️</button>
+    </div>
+
     <footer>
         &copy; 2025 Newland Roleplay – Server SAMP Roleplay<br>
         Not affiliated with Rockstar Games or San Andreas Multiplayer.
     </footer>
+
+    <script>
+        let music = document.getElementById("bgMusic");
+        let btn = document.querySelector(".music-btn");
+        let isPlaying = false;
+
+        function toggleMusic() {
+            if (isPlaying) {
+                music.pause();
+                btn.textContent = "▶️";
+            } else {
+                music.play().then(() => {
+                    btn.textContent = "⏸️";
+                }).catch(e => {
+                    alert("Autoplay diblokir oleh browser. Klik OK lalu klik tombol lagi.");
+                    console.warn("Autoplay gagal:", e);
+                });
+            }
+            isPlaying = !isPlaying;
+        }
+    </script>
 </body>
 </html>
