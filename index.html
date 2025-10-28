@@ -7,8 +7,8 @@
     <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #0c1445, #1a2a6c);
-            color: #f0f4ff;
+            background: linear-gradient(135deg, #8c0000, #cc0000); /* Merah tua ke merah terang */
+            color: #ffffff;
             margin: 0;
             padding: 0;
             line-height: 1.6;
@@ -16,13 +16,15 @@
         header {
             text-align: center;
             padding: 2rem 1rem;
-            background: rgba(0, 0, 0, 0.4);
+            background-color: #ffffff; /* Putih */
+            color: #cc0000; /* Merah */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
         }
         h1 {
             font-size: 2.8rem;
             margin: 0;
-            color: #ffcc00;
-            text-shadow: 0 0 10px rgba(255, 204, 0, 0.6);
+            color: #cc0000;
+            text-shadow: none;
         }
         .container {
             max-width: 900px;
@@ -30,17 +32,18 @@
             padding: 0 1.5rem;
         }
         .card {
-            background: rgba(10, 15, 40, 0.85);
+            background: rgba(255, 255, 255, 0.92); /* Latar putih transparan */
             border-radius: 12px;
             padding: 1.5rem;
             margin-bottom: 1.5rem;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
-            border: 1px solid #3a5bff;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            color: #000; /* Teks hitam agar kontras di latar putih */
+            border: 2px solid #cc0000;
         }
         .card h2 {
-            color: #4fc3f7;
+            color: #8c0000;
             margin-top: 0;
-            border-bottom: 1px solid #2a3a7a;
+            border-bottom: 2px solid #cc0000;
             padding-bottom: 0.5rem;
         }
         ul {
@@ -50,7 +53,7 @@
             margin-bottom: 0.4rem;
         }
         .highlight {
-            color: #ffcc00;
+            color: #cc0000;
             font-weight: bold;
         }
         .link-box {
@@ -59,24 +62,27 @@
         }
         .link-box a {
             display: inline-block;
-            background: #ffcc00;
-            color: #0c1445;
-            padding: 0.8rem 1.8rem;
+            background: #cc0000;
+            color: #ffffff;
+            padding: 0.9rem 2rem;
             border-radius: 30px;
             font-weight: bold;
             text-decoration: none;
-            font-size: 1.1rem;
+            font-size: 1.15rem;
             transition: transform 0.2s, box-shadow 0.2s;
+            border: 2px solid #ffffff;
         }
         .link-box a:hover {
             transform: scale(1.05);
-            box-shadow: 0 0 15px rgba(255, 204, 0, 0.7);
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.8);
+            background: #8c0000;
         }
         footer {
             text-align: center;
             padding: 1.5rem;
-            color: #aaa;
-            font-size: 0.9rem;
+            color: #fff;
+            font-size: 0.95rem;
+            background: rgba(0, 0, 0, 0.3);
         }
     </style>
 </head>
@@ -89,7 +95,7 @@
     <div class="container">
         <div class="card">
             <h2>⚙️ Informasi Umum</h2>
-            <p><span class="highlight">REGISTER</span> : UCP (User Control Panel)<br>
+            <p><span class="highlight">REGISTER</span> : UCP<br>
             <span class="highlight">KOMUNIKASI</span> : VOICE ONLY<br>
             <span class="highlight">MATA UANG</span> : DOLAR<br>
             <span class="highlight">PLATFORM</span> : ANDROID & PC SUPPORT</p>
