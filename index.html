@@ -107,10 +107,47 @@
       opacity: 0.8;
     }
 
-    /* ==== Responsive ==== */
+    /* ==== Tombol Musik ==== */
+    #music-control {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: rgba(0,0,0,0.6);
+      border: 2px solid #00d4ff;
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: 0.3s;
+      box-shadow: 0 0 10px #00d4ff;
+      z-index: 10;
+    }
+
+    #music-control:hover {
+      transform: scale(1.1);
+      background: rgba(0,212,255,0.2);
+    }
+
+    #music-control svg {
+      width: 28px;
+      height: 28px;
+      fill: #00d4ff;
+    }
+
     @media (max-width: 600px) {
       header h1 { font-size: 1.8em; }
       main { margin: 20px; padding: 15px; }
+      #music-control {
+        width: 50px;
+        height: 50px;
+      }
+      #music-control svg {
+        width: 22px;
+        height: 22px;
+      }
     }
   </style>
 </head>
@@ -124,10 +161,31 @@
 
   <!-- Background Music -->
   <audio id="bg-music" src="lagu.mp3" autoplay loop></audio>
+
+  <!-- Tombol Play/Pause Musik -->
+  <div id="music-control" title="Play/Pause Music">
+    <!-- Icon awal: pause -->
+    <svg id="music-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+      <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
+    </svg>
+  </div>
+
   <script>
-    // Mengatur volume musik agar tidak terlalu keras
     const music = document.getElementById('bg-music');
+    const control = document.getElementById('music-control');
+    const icon = document.getElementById('music-icon');
+
     music.volume = 0.2;
+
+    control.addEventListener('click', () => {
+      if (music.paused) {
+        music.play();
+        icon.innerHTML = '<path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>'; // Pause icon
+      } else {
+        music.pause();
+        icon.innerHTML = '<path d="M8 5v14l11-7z"/>'; // Play icon
+      }
+    });
   </script>
 
   <header>
@@ -203,5 +261,6 @@
   <footer>
     © 2025 Newland Roleplay — Developed by Team NL-RP
   </footer>
+
 </body>
 </html>
