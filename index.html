@@ -19,7 +19,7 @@
       overflow-x: hidden;
     }
 
-    /* ==== Video Background ==== */
+    /* ==== Background Video ==== */
     #bg-video {
       position: fixed;
       top: 0;
@@ -33,10 +33,22 @@
 
     /* ==== Header ==== */
     header {
-      background: rgba(0,0,0,0.5);
+      background: rgba(0, 0, 0, 0.6);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 15px;
       padding: 20px 40px;
       text-align: center;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+    }
+
+    header img {
+      height: 60px;
+      width: 60px;
+      border-radius: 50%;
+      object-fit: cover;
+      box-shadow: 0 0 15px #00d4ff;
     }
 
     header h1 {
@@ -48,16 +60,18 @@
     header p {
       font-weight: 300;
       color: #fff;
+      text-align: center;
+      width: 100%;
     }
 
-    /* ==== Main Content ==== */
+    /* ==== Main ==== */
     main {
       max-width: 900px;
       margin: 40px auto;
       padding: 20px;
-      background: rgba(0,0,0,0.6);
+      background: rgba(0, 0, 0, 0.6);
       border-radius: 20px;
-      box-shadow: 0 0 15px rgba(0,0,0,0.4);
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
     }
 
     section {
@@ -93,11 +107,13 @@
       border-radius: 10px;
       font-weight: bold;
       transition: 0.3s;
+      box-shadow: 0 0 10px #5865F2;
     }
 
     .discord-link:hover {
       background: #4752c4;
       transform: scale(1.05);
+      box-shadow: 0 0 20px #5865F2;
     }
 
     footer {
@@ -138,12 +154,30 @@
     }
 
     @media (max-width: 600px) {
-      header h1 { font-size: 1.8em; }
-      main { margin: 20px; padding: 15px; }
+      header {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      header img {
+        height: 70px;
+        width: 70px;
+      }
+
+      header h1 {
+        font-size: 1.8em;
+      }
+
+      main {
+        margin: 20px;
+        padding: 15px;
+      }
+
       #music-control {
         width: 50px;
         height: 50px;
       }
+
       #music-control svg {
         width: 22px;
         height: 22px;
@@ -153,18 +187,17 @@
 </head>
 <body>
 
-  <!-- Video Background -->
+  <!-- Background Video -->
   <video autoplay muted loop id="bg-video">
     <source src="background.mp4" type="video/mp4">
     Browser kamu tidak mendukung video HTML5.
   </video>
 
   <!-- Background Music -->
-  <audio id="bg-music" src="music.mp3" autoplay loop></audio>
+  <audio id="bg-music" src="lagu.mp3" autoplay loop></audio>
 
-  <!-- Tombol Play/Pause Musik -->
+  <!-- Tombol Musik -->
   <div id="music-control" title="Play/Pause Music">
-    <!-- Icon awal: pause -->
     <svg id="music-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
       <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
     </svg>
@@ -180,17 +213,20 @@
     control.addEventListener('click', () => {
       if (music.paused) {
         music.play();
-        icon.innerHTML = '<path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>'; // Pause icon
+        icon.innerHTML = '<path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>'; // pause icon
       } else {
         music.pause();
-        icon.innerHTML = '<path d="M8 5v14l11-7z"/>'; // Play icon
+        icon.innerHTML = '<path d="M8 5v14l11-7z"/>'; // play icon
       }
     });
   </script>
 
   <header>
-    <h1>🌆 NEWLAND ROLEPLAY</h1>
-    <p>Realistic Roleplay Experience — Android & PC Support</p>
+    <img src="logo.png" alt="Logo Newland Roleplay">
+    <div>
+      <h1>🌆 NEWLAND ROLEPLAY</h1>
+      <p>Realistic Roleplay Experience — Android & PC Support</p>
+    </div>
   </header>
 
   <main>
@@ -261,6 +297,5 @@
   <footer>
     © 2025 Newland Roleplay — Developed by Team NL-RP
   </footer>
-
 </body>
 </html>
