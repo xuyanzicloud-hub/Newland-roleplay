@@ -19,84 +19,91 @@
     }
 
     header {
-      display: flex; align-items: center; justify-content: center; flex-wrap: wrap;
-      text-align: center; padding: 25px;
-      background: rgba(0, 0, 0, 0.5);
-      backdrop-filter: blur(5px);
+      text-align: center;
+      padding: 60px 20px 40px 20px;
+      background: rgba(0, 0, 0, 0.55);
       border-bottom: 1px solid rgba(255,255,255,0.15);
-      animation: fadeDown 1.2s ease;
+      backdrop-filter: blur(6px);
+      animation: fadeDown 1s ease;
     }
 
-    header img { height: 90px; width: 90px; border-radius: 50%; object-fit: cover; box-shadow: 0 0 25px #00d4ff; margin-bottom: 10px; animation: float 3s ease-in-out infinite; }
-    header h1 { font-size: 2.3em; color: #00d4ff; text-shadow: 0 0 20px #00d4ff; letter-spacing: 3px; }
-    header p { font-weight: 300; color: #dcdcdc; margin-top: 6px; }
+    header h1 {
+      font-size: 3em;
+      color: #00d4ff;
+      text-shadow: 0 0 25px #00d4ff;
+      letter-spacing: 2px;
+    }
+
+    header p {
+      color: #ccc;
+      margin-top: 10px;
+      font-weight: 300;
+      font-size: 1.1em;
+    }
 
     nav {
       text-align: center;
       background: rgba(0,0,0,0.4);
-      padding: 10px 0;
+      padding: 15px 0;
       border-bottom: 1px solid rgba(255,255,255,0.15);
     }
 
     nav a {
       color: #00d4ff;
       text-decoration: none;
-      margin: 0 15px;
+      margin: 0 20px;
       font-weight: bold;
+      font-size: 1.1em;
       transition: 0.3s;
     }
 
-    nav a:hover { color: white; text-shadow: 0 0 15px #00d4ff; }
+    nav a:hover {
+      color: white;
+      text-shadow: 0 0 15px #00d4ff;
+    }
 
     main {
-      max-width: 950px; margin: 50px auto; padding: 25px;
+      text-align: center;
+      padding: 60px 20px;
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    .section {
       background: rgba(0, 0, 0, 0.55);
-      border-radius: 25px;
-      box-shadow: 0 0 30px rgba(0, 0, 0, 0.6);
-      backdrop-filter: blur(8px);
-      animation: fadeUp 1.5s ease;
-    }
-
-    section { margin-bottom: 45px; opacity: 0; transform: translateY(40px); transition: all 0.8s ease-out; }
-    section.visible { opacity: 1; transform: translateY(0); }
-    h2 { color: #00d4ff; margin-bottom: 15px; border-bottom: 2px solid #00d4ff; display: inline-block; padding-bottom: 5px; text-shadow: 0 0 10px #00d4ff; }
-    ul { list-style: none; margin-left: 20px; }
-    li { margin: 6px 0; opacity: 0.95; line-height: 1.5em; }
-
-    /* BENEFIT GIRL STYLE */
-    .benefit-girl {
-      background: rgba(255, 105, 180, 0.15);
-      border: 2px solid rgba(255, 105, 180, 0.6);
+      border: 2px solid rgba(0, 212, 255, 0.3);
       border-radius: 20px;
-      padding: 25px;
-      box-shadow: 0 0 25px rgba(255, 105, 180, 0.4);
-      transition: 0.4s;
+      padding: 30px;
+      margin-bottom: 40px;
+      backdrop-filter: blur(8px);
+      box-shadow: 0 0 25px rgba(0,212,255,0.2);
+      animation: fadeUp 1s ease;
     }
 
-    .benefit-girl:hover {
-      transform: scale(1.03);
-      box-shadow: 0 0 40px rgba(255, 105, 180, 0.8);
+    .section h2 {
+      color: #00d4ff;
+      text-shadow: 0 0 15px #00d4ff;
+      margin-bottom: 15px;
     }
 
-    .benefit-girl h2 {
-      color: #ff69b4;
-      border-color: #ff69b4;
-      text-shadow: 0 0 15px #ff69b4;
+    .section p, .section ul {
+      color: #ccc;
+      line-height: 1.7em;
+      font-size: 1em;
+      list-style: none;
+      text-align: left;
+      max-width: 800px;
+      margin: auto;
     }
 
-    .discord-link {
-      display: block; text-align: center; margin: 40px auto;
-      background: linear-gradient(45deg, #5865F2, #00d4ff);
-      color: white; text-decoration: none;
-      padding: 14px 35px;
-      border-radius: 14px;
-      font-weight: bold; font-size: 1.1em;
-      transition: 0.4s;
-      box-shadow: 0 0 25px #00d4ff;
-      width: fit-content;
+    .section ul li {
+      margin: 6px 0;
     }
 
-    .discord-link:hover { transform: scale(1.07); box-shadow: 0 0 35px #00d4ff; }
+    .section ul li::before {
+      content: "💠 ";
+      color: #00d4ff;
+    }
 
     footer {
       text-align: center;
@@ -108,30 +115,57 @@
       backdrop-filter: blur(5px);
     }
 
-    #music-control {
-      position: fixed; bottom: 25px; right: 25px;
-      background: rgba(0,0,0,0.6);
-      border: 2px solid #00d4ff;
-      border-radius: 50%;
-      width: 65px; height: 65px;
-      display: flex; align-items: center; justify-content: center;
-      cursor: pointer; transition: 0.3s;
-      box-shadow: 0 0 20px #00d4ff; z-index: 10;
+    /* Music Player */
+    .music-player {
+      position: fixed;
+      bottom: 25px;
+      right: 25px;
+      background: rgba(0, 0, 0, 0.55);
+      border: 2px solid rgba(0, 212, 255, 0.5);
+      border-radius: 50px;
+      padding: 10px 20px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      box-shadow: 0 0 25px rgba(0, 212, 255, 0.35);
       backdrop-filter: blur(6px);
+      z-index: 1000;
+      animation: fadeUp 1s ease;
     }
 
-    #music-control:hover { transform: scale(1.1); background: rgba(0,212,255,0.25); }
-    #music-control svg { width: 30px; height: 30px; fill: #00d4ff; }
+    .music-player button {
+      background: none;
+      border: none;
+      color: #00d4ff;
+      font-size: 1.5em;
+      cursor: pointer;
+      transition: 0.3s;
+    }
 
-    @keyframes fadeUp { from { opacity: 0; transform: translateY(40px); } to { opacity: 1; transform: translateY(0); } }
-    @keyframes fadeDown { from { opacity: 0; transform: translateY(-40px); } to { opacity: 1; transform: translateY(0); } }
-    @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
+    .music-player button:hover {
+      color: white;
+      text-shadow: 0 0 10px #00d4ff;
+    }
+
+    .music-player span {
+      color: #ccc;
+      font-size: 0.9em;
+      white-space: nowrap;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(40px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeDown {
+      from { opacity: 0; transform: translateY(-40px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
 
     @media (max-width: 600px) {
-      header h1 { font-size: 1.8em; }
-      main { margin: 20px; padding: 20px; }
-      #music-control { width: 55px; height: 55px; }
-      #music-control svg { width: 22px; height: 22px; }
+      header h1 { font-size: 2em; }
+      nav a { margin: 0 10px; font-size: 1em; }
     }
   </style>
 </head>
@@ -141,118 +175,118 @@
     <source src="background.mp4" type="video/mp4">
   </video>
 
-  <audio id="bg-music" src="lagu.mp3" autoplay loop></audio>
-
-  <div id="music-control" title="Play/Pause Music">
-    <svg id="music-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-      <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
-    </svg>
-  </div>
-
   <header>
-    <img src="logo.png" alt="Logo Newland Roleplay">
-    <div>
-      <h1>🌆 NEWLAND ROLEPLAY</h1>
-      <p>Realistic Roleplay Experience — Android & PC Support</p>
-    </div>
+    <h1>🌆 Newland Roleplay</h1>
+    <p>“Hidupkan kisahmu di dunia baru penuh aksi dan komunitas nyata.”</p>
   </header>
 
   <nav>
     <a href="index.html">🏠 Home</a>
-    <a href="about.html">👥 About Us</a>
+    <a href="about.html">👥 About</a>
     <a href="gallery.html">🖼️ Gallery</a>
+    <a href="donasi.html">💰 Donasi</a>
   </nav>
 
   <main>
-    <section>
-      <h2>⚙️ INFORMASI SERVER</h2>
-      <ul>
-        <li><b>REGISTER :</b> UCP</li>
-        <li><b>KOMUNIKASI :</b> Voice Only</li>
-        <li><b>MATA UANG :</b> Dolar</li>
-        <li><b>PLATFORM :</b> Android & PC</li>
-      </ul>
-    </section>
+    <div class="section">
+      <h2>⚙️ Informasi Server</h2>
+      <p>
+        💬 Komunikasi: <b>Voice Only</b><br>
+        💸 Mata Uang: <b>Dolar</b><br>
+        📱 Platform: <b>Android & PC Support</b><br>
+        🔗 Discord: <a href="https://discord.gg/6HR4szqNFx" target="_blank" style="color:#00d4ff;text-decoration:none;">Klik di sini</a>
+      </p>
+    </div>
 
-    <section>
-      <h2>👔 FACTION TERSEDIA</h2>
+    <div class="section">
+      <h2>👔 Faction & Job Tersedia</h2>
       <ul>
         <li>👮 SAPD - Kepolisian</li>
         <li>🏥 SAMD - Medis</li>
         <li>🏢 Pemerintah Kota</li>
         <li>🛒 Pedagang</li>
         <li>🧰 Mechanic</li>
-        <li>🔊 SANEWS</li>
+        <li>🔊 SANews</li>
       </ul>
-    </section>
+      <br>
+      <h3>🏛️ Jobs Pemerintah</h3>
+      <ul>
+        <li>🛢️ Tukang Minyak</li>
+        <li>⛏️ Penambang</li>
+        <li>🚎 Supir Bus Kota</li>
+        <li>🐓 Tukang Ayam</li>
+        <li>🪵 Tukang Kayu</li>
+        <li>🚛 Cargo</li>
+        <li>⛵ Nelayan</li>
+        <li>🐄 Pemerah Sapi</li>
+        <li>🧶 Penjahit</li>
+        <li>📦 Recycler</li>
+      </ul>
+    </div>
 
-    <section>
-      <h2>🎁 STARTERPACK WARGA BARU</h2>
+    <div class="section">
+      <h2>💼 Side Job</h2>
+      <ul>
+        <li>🗑️ Trashmasher</li>
+        <li>🌿 Mower</li>
+        <li>🧹 Sweeper</li>
+        <li>📦 Delivery</li>
+        <li>🏗️ Forklift</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>🎁 Starterpack Warga Baru</h2>
       <ul>
         <li>💸 Uang 10K</li>
         <li>📱 1 Handphone</li>
-        <li>🍱 Makanan 10 & Minuman 10</li>
+        <li>🍱 Makanan & Minuman 10</li>
         <li>🚗 Sanchez</li>
       </ul>
-    </section>
+    </div>
 
-    <section class="benefit-girl">
-      <h2>💖 BENEFIT GIRL</h2>
+    <div class="section">
+      <h2>👩 Benefit Girl</h2>
       <ul>
-        <li>🚗 1 UNIT VEH COMET</li>
-        <li>🔢 +5 LEVEL</li>
-        <li>💎 VIP LEVEL 1 (7 HARI)</li>
-        <li>💸 UANG IC 5K</li>
-        <li>🏡 HOUSE TYPE SMALL</li>
+        <li>🚗 1 Unit Vehicle Comet</li>
+        <li>🔢 +5 Level</li>
+        <li>💎 VIP Level 1 (7 Hari)</li>
+        <li>💸 Uang IC 5K</li>
+        <li>🏡 House Type Small</li>
       </ul>
-    </section>
-
-    <a class="discord-link" id="discordJoin" target="_blank">
-      🚀 JOIN DISCORD SERVER
-    </a>
+    </div>
   </main>
 
   <footer>
-    © 2025 Newland Roleplay — Developed by Team NL-RP
+    © 2025 Newland Roleplay — All Rights Reserved
   </footer>
+
+  <!-- 🎵 Music Player -->
+  <div class="music-player">
+    <button id="music-btn">⏸</button>
+    <span id="music-status">Now Playing: Newland Theme</span>
+    <audio id="bg-music" autoplay loop>
+      <source src="lagu.mp3" type="audio/mp3">
+    </audio>
+  </div>
 
   <script>
     const music = document.getElementById('bg-music');
-    const control = document.getElementById('music-control');
-    const icon = document.getElementById('music-icon');
-    music.volume = 0.25;
+    const btn = document.getElementById('music-btn');
+    const status = document.getElementById('music-status');
+    let isPlaying = true;
 
-    control.addEventListener('click', () => {
-      if (music.paused) {
-        music.play();
-        icon.innerHTML = '<path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>';
-      } else {
+    btn.addEventListener('click', () => {
+      if (isPlaying) {
         music.pause();
-        icon.innerHTML = '<path d="M8 5v14l11-7z"/>';
-      }
-    });
-
-    const sections = document.querySelectorAll('section');
-    window.addEventListener('scroll', () => {
-      const trigger = window.innerHeight * 0.85;
-      sections.forEach(sec => {
-        const top = sec.getBoundingClientRect().top;
-        if (top < trigger) sec.classList.add('visible');
-      });
-    });
-
-    const discordButton = document.getElementById('discordJoin');
-    const discordLink = "https://discord.gg/6HR4szqNFx";
-    const discordAppLink = "discord://discord.gg/6HR4szqNFx";
-
-    discordButton.addEventListener('click', () => {
-      const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
-      if (isMobile) {
-        window.location.href = discordAppLink;
-        setTimeout(() => window.location.href = discordLink, 1000);
+        btn.textContent = '▶️';
+        status.textContent = 'Music Paused';
       } else {
-        window.open(discordLink, "_blank");
+        music.play();
+        btn.textContent = '⏸';
+        status.textContent = 'Now Playing: Newland Theme';
       }
+      isPlaying = !isPlaying;
     });
   </script>
 </body>
