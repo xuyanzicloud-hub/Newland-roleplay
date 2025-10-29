@@ -8,70 +8,48 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
 
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Poppins', sans-serif;
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+    body { color: white; overflow-x: hidden; }
 
-    body {
-      color: white;
-      overflow-x: hidden;
-    }
-
-    /* Background Video */
     #bg-video {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      z-index: -1;
+      position: fixed; top: 0; left: 0;
+      width: 100%; height: 100%;
+      object-fit: cover; z-index: -1;
       filter: brightness(35%) contrast(120%);
     }
 
     header {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-wrap: wrap;
-      text-align: center;
-      padding: 25px;
+      display: flex; align-items: center; justify-content: center; flex-wrap: wrap;
+      text-align: center; padding: 25px;
       background: rgba(0, 0, 0, 0.5);
       backdrop-filter: blur(5px);
       animation: fadeDown 1.2s ease;
       border-bottom: 1px solid rgba(255,255,255,0.15);
     }
 
-    header img {
-      height: 90px;
-      width: 90px;
-      border-radius: 50%;
-      object-fit: cover;
-      box-shadow: 0 0 25px #00d4ff;
-      margin-bottom: 10px;
-      animation: float 3s ease-in-out infinite;
+    header img { height: 90px; width: 90px; border-radius: 50%; object-fit: cover; box-shadow: 0 0 25px #00d4ff; margin-bottom: 10px; animation: float 3s ease-in-out infinite; }
+    header h1 { font-size: 2.3em; color: #00d4ff; text-shadow: 0 0 20px #00d4ff; letter-spacing: 3px; }
+    header p { font-weight: 300; color: #dcdcdc; margin-top: 6px; }
+
+    nav {
+      text-align: center;
+      background: rgba(0,0,0,0.4);
+      padding: 10px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.15);
     }
 
-    header h1 {
-      font-size: 2.3em;
+    nav a {
       color: #00d4ff;
-      text-shadow: 0 0 20px #00d4ff;
-      letter-spacing: 3px;
+      text-decoration: none;
+      margin: 0 15px;
+      font-weight: bold;
+      transition: 0.3s;
     }
 
-    header p {
-      font-weight: 300;
-      color: #dcdcdc;
-      margin-top: 6px;
-    }
+    nav a:hover { color: white; text-shadow: 0 0 15px #00d4ff; }
 
     main {
-      max-width: 950px;
-      margin: 50px auto;
-      padding: 25px;
+      max-width: 950px; margin: 50px auto; padding: 25px;
       background: rgba(0, 0, 0, 0.55);
       border-radius: 25px;
       box-shadow: 0 0 30px rgba(0, 0, 0, 0.6);
@@ -79,59 +57,25 @@
       animation: fadeUp 1.5s ease;
     }
 
-    section {
-      margin-bottom: 45px;
-      opacity: 0;
-      transform: translateY(40px);
-      transition: all 0.8s ease-out;
-    }
+    section { margin-bottom: 45px; opacity: 0; transform: translateY(40px); transition: all 0.8s ease-out; }
+    section.visible { opacity: 1; transform: translateY(0); }
+    h2 { color: #00d4ff; margin-bottom: 15px; border-bottom: 2px solid #00d4ff; display: inline-block; padding-bottom: 5px; text-shadow: 0 0 10px #00d4ff; }
+    ul { list-style: none; margin-left: 20px; }
+    li { margin: 6px 0; opacity: 0.95; line-height: 1.5em; }
 
-    section.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    h2 {
-      color: #00d4ff;
-      margin-bottom: 15px;
-      border-bottom: 2px solid #00d4ff;
-      display: inline-block;
-      padding-bottom: 5px;
-      text-shadow: 0 0 10px #00d4ff;
-    }
-
-    ul {
-      list-style: none;
-      margin-left: 20px;
-    }
-
-    li {
-      margin: 6px 0;
-      opacity: 0.95;
-      line-height: 1.5em;
-    }
-
-    /* Tombol Discord */
     .discord-link {
-      display: block;
-      text-align: center;
-      margin: 40px auto;
+      display: block; text-align: center; margin: 40px auto;
       background: linear-gradient(45deg, #5865F2, #00d4ff);
-      color: white;
-      text-decoration: none;
+      color: white; text-decoration: none;
       padding: 14px 35px;
       border-radius: 14px;
-      font-weight: bold;
-      font-size: 1.1em;
+      font-weight: bold; font-size: 1.1em;
       transition: 0.4s;
       box-shadow: 0 0 25px #00d4ff;
       width: fit-content;
     }
 
-    .discord-link:hover {
-      transform: scale(1.07);
-      box-shadow: 0 0 35px #00d4ff;
-    }
+    .discord-link:hover { transform: scale(1.07); box-shadow: 0 0 35px #00d4ff; }
 
     footer {
       text-align: center;
@@ -143,51 +87,24 @@
       backdrop-filter: blur(5px);
     }
 
-    /* Musik Button */
     #music-control {
-      position: fixed;
-      bottom: 25px;
-      right: 25px;
+      position: fixed; bottom: 25px; right: 25px;
       background: rgba(0,0,0,0.6);
       border: 2px solid #00d4ff;
       border-radius: 50%;
-      width: 65px;
-      height: 65px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      transition: 0.3s;
-      box-shadow: 0 0 20px #00d4ff;
-      z-index: 10;
+      width: 65px; height: 65px;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer; transition: 0.3s;
+      box-shadow: 0 0 20px #00d4ff; z-index: 10;
       backdrop-filter: blur(6px);
     }
 
-    #music-control:hover {
-      transform: scale(1.1);
-      background: rgba(0,212,255,0.25);
-    }
+    #music-control:hover { transform: scale(1.1); background: rgba(0,212,255,0.25); }
+    #music-control svg { width: 30px; height: 30px; fill: #00d4ff; }
 
-    #music-control svg {
-      width: 30px;
-      height: 30px;
-      fill: #00d4ff;
-    }
-
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(40px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    @keyframes fadeDown {
-      from { opacity: 0; transform: translateY(-40px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    @keyframes float {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-6px); }
-    }
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(40px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes fadeDown { from { opacity: 0; transform: translateY(-40px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
 
     @media (max-width: 600px) {
       header h1 { font-size: 1.8em; }
@@ -199,15 +116,12 @@
 </head>
 <body>
 
-  <!-- Background Video -->
   <video autoplay muted loop id="bg-video">
     <source src="background.mp4" type="video/mp4">
   </video>
 
-  <!-- Background Music -->
   <audio id="bg-music" src="lagu.mp3" autoplay loop></audio>
 
-  <!-- Tombol Musik -->
   <div id="music-control" title="Play/Pause Music">
     <svg id="music-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
       <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
@@ -221,6 +135,11 @@
       <p>Realistic Roleplay Experience — Android & PC Support</p>
     </div>
   </header>
+
+  <nav>
+    <a href="index.html">🏠 Home</a>
+    <a href="about.html">👥 About Us</a>
+  </nav>
 
   <main>
     <section>
@@ -246,33 +165,6 @@
     </section>
 
     <section>
-      <h2>🏛️ JOBS PEMERINTAH</h2>
-      <ul>
-        <li>🛢️ Tukang Minyak</li>
-        <li>⛏ Penambang</li>
-        <li>🚎 Supir Bus Kota</li>
-        <li>🐓 Tukang Ayam</li>
-        <li>🪵 Tukang Kayu</li>
-        <li>🚛 Cargo</li>
-        <li>⛵ Nelayan</li>
-        <li>🐄 Pemerah Sapi</li>
-        <li>🧶 Penjahit</li>
-        <li>📦 Recycler</li>
-      </ul>
-    </section>
-
-    <section>
-      <h2>💼 SIDE JOB</h2>
-      <ul>
-        <li>Trashmasher</li>
-        <li>Mower</li>
-        <li>Sweeper</li>
-        <li>Delivery</li>
-        <li>Forklift</li>
-      </ul>
-    </section>
-
-    <section>
       <h2>🎁 STARTERPACK WARGA BARU</h2>
       <ul>
         <li>💸 Uang 10K</li>
@@ -292,7 +184,6 @@
   </footer>
 
   <script>
-    // Musik kontrol
     const music = document.getElementById('bg-music');
     const control = document.getElementById('music-control');
     const icon = document.getElementById('music-icon');
@@ -301,14 +192,13 @@
     control.addEventListener('click', () => {
       if (music.paused) {
         music.play();
-        icon.innerHTML = '<path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>'; // pause
+        icon.innerHTML = '<path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>';
       } else {
         music.pause();
-        icon.innerHTML = '<path d="M8 5v14l11-7z"/>'; // play
+        icon.innerHTML = '<path d="M8 5v14l11-7z"/>';
       }
     });
 
-    // Fade animasi scroll
     const sections = document.querySelectorAll('section');
     window.addEventListener('scroll', () => {
       const trigger = window.innerHeight * 0.85;
@@ -318,7 +208,6 @@
       });
     });
 
-    // Tombol Discord - langsung buka app di Android
     const discordButton = document.getElementById('discordJoin');
     const discordLink = "https://discord.gg/6HR4szqNFx";
     const discordAppLink = "discord://discord.gg/6HR4szqNFx";
@@ -334,4 +223,4 @@
     });
   </script>
 </body>
-      </html>
+</html>
