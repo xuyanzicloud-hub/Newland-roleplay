@@ -1,455 +1,57 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Newland Roleplay — Official SAMP Server</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Orbitron:wght@600;700&display=swap" rel="stylesheet">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Poppins', sans-serif;
-            color: #fff;
-            overflow-x: hidden;
-            background: #000;
-        }
-
-        /* Background Video */
-        .video-bg {
-            position: fixed;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            object-fit: cover;
-            z-index: -3;
-        }
-
-        .overlay {
-            position: fixed;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            background: linear-gradient(120deg, rgba(139, 0, 0, 0.85), rgba(204, 0, 0, 0.75));
-            z-index: -2;
-        }
-
-        /* Header dengan Foto Founder & Ikon Close */
-        header {
-            text-align: center;
-            padding: 5rem 1.5rem 3rem;
-            position: relative;
-            z-index: 10;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .header-container {
-            display: flex;
-            align-items: center;
-            gap: 2rem;
-            max-width: 1000px;
-            margin: 0 auto;
-            position: relative;
-        }
-
-        .founder-photo {
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            border: 3px solid rgba(255, 255, 255, 0.8);
-            overflow: hidden;
-            box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
-            transition: transform 0.4s ease, box-shadow 0.4s ease;
-        }
-
-        .founder-photo:hover {
-            transform: scale(1.1);
-            box-shadow: 0 0 30px rgba(255, 215, 0, 0.7);
-        }
-
-        .founder-photo img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .logo-container {
-            text-align: center;
-            flex-grow: 1;
-            position: relative;
-        }
-
-        h1 {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 4.2rem;
-            font-weight: 700;
-            background: linear-gradient(to right, #ffffff, #ffd700);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            text-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
-            margin-bottom: 0.5rem;
-            letter-spacing: 1.5px;
-            line-height: 1.1;
-        }
-
-        .subtitle {
-            font-size: 1.3rem;
-            max-width: 700px;
-            margin: 0 auto;
-            color: #f8f8f8;
-            opacity: 0.9;
-            text-shadow: 0 2px 5px rgba(0,0,0,0.3);
-        }
-
-        /* Ikon Close di Pojok Kanan Atas Header */
-        .icon-close {
-            position: absolute;
-            top: -10px;
-            right: -10px;
-            width: 50px;
-            height: 50px;
-            background: rgba(0, 0, 0, 0.8);
-            border-radius: 50%;
-            border: 2px solid #ff0000;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            box-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
-            transition: all 0.3s ease;
-            z-index: 20;
-        }
-
-        .icon-close:hover {
-            transform: scale(1.1);
-            border-color: #ffffff;
-            background: rgba(255, 0, 0, 0.3);
-        }
-
-        .icon-close svg {
-            stroke: #ff0000;
-            stroke-width: 2.5;
-            width: 24px;
-            height: 24px;
-        }
-
-        .icon-close svg:hover {
-            stroke: #ffffff;
-        }
-
-        /* Container */
-        .container {
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: 0 1.5rem;
-            position: relative;
-            z-index: 10;
-        }
-
-        /* Card Styling */
-        .card {
-            background: rgba(255, 255, 255, 0.08);
-            backdrop-filter: blur(12px);
-            border-radius: 20px;
-            padding: 2rem;
-            margin-bottom: 2rem;
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(204, 0, 0, 0.4);
-            border-color: rgba(255, 255, 255, 0.3);
-        }
-
-        .card h2 {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 1.8rem;
-            color: #ffd700;
-            margin-bottom: 1.2rem;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .card ul {
-            list-style: none;
-            padding-left: 0;
-        }
-
-        .card li {
-            padding: 0.5rem 0;
-            font-size: 1.05rem;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .card li:last-child {
-            border-bottom: none;
-        }
-
-        .highlight {
-            color: #ffd700;
-            font-weight: 600;
-        }
-
-        /* Discord Button */
-        .link-box {
-            text-align: center;
-            margin: 2.5rem 0;
-        }
-
-        .discord-btn {
-            position: relative;
-            display: inline-block;
-            padding: 1rem 2.8rem;
-            font-family: 'Orbitron', sans-serif;
-            font-size: 1.25rem;
-            font-weight: 600;
-            color: #fff;
-            background: linear-gradient(120deg, #cc0000, #8c0000);
-            border: none;
-            border-radius: 50px;
-            overflow: hidden;
-            cursor: pointer;
-            box-shadow: 0 8px 25px rgba(204, 0, 0, 0.6);
-            transition: all 0.4s ease;
-            text-decoration: none;
-            letter-spacing: 1px;
-        }
-
-        .discord-btn:hover {
-            transform: scale(1.05);
-            box-shadow: 0 12px 35px rgba(255, 215, 0, 0.5);
-        }
-
-        .discord-btn::before {
-            content: '';
-            position: absolute;
-            top: 0; left: -100%;
-            width: 100%; height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
-            transition: 0.6s;
-        }
-
-        .discord-btn:hover::before {
-            left: 100%;
-        }
-
-        /* Footer */
-        footer {
-            text-align: center;
-            padding: 2rem;
-            color: rgba(255, 255, 255, 0.6);
-            font-size: 0.95rem;
-            position: relative;
-            z-index: 10;
-            margin-top: 2rem;
-        }
-
-        /* Musik Button */
-        #unmute-btn {
-            position: fixed;
-            bottom: 25px;
-            right: 25px;
-            width: 55px;
-            height: 55px;
-            border-radius: 50%;
-            background: rgba(204, 0, 0, 0.8);
-            border: 2px solid white;
-            color: white;
-            font-size: 18px;
-            cursor: pointer;
-            z-index: 1000;
-            display: none;
-            backdrop-filter: blur(8px);
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
-            transition: all 0.3s ease;
-        }
-
-        #unmute-btn:hover {
-            transform: scale(1.1);
-            background: rgba(255, 215, 0, 0.9);
-            color: #cc0000;
-        }
-
-        /* Animasi Scroll */
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .card, .link-box, footer {
-            animation: fadeInUp 0.8s ease forwards;
-            opacity: 0;
-        }
-
-        .card:nth-child(1) { animation-delay: 0.2s; }
-        .card:nth-child(2) { animation-delay: 0.4s; }
-        .card:nth-child(3) { animation-delay: 0.6s; }
-        .card:nth-child(4) { animation-delay: 0.8s; }
-        .link-box { animation-delay: 1.0s; }
-        footer { animation-delay: 1.2s; }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            h1 { font-size: 2.8rem; }
-            .subtitle { font-size: 1.1rem; }
-            .header-container { flex-direction: column; gap: 1rem; }
-            .founder-photo { width: 100px; height: 100px; }
-            .card { padding: 1.5rem; }
-            .discord-btn { padding: 0.9rem 2rem; font-size: 1.1rem; }
-            .icon-close {
-                top: -5px;
-                right: -5px;
-                width: 40px;
-                height: 40px;
-            }
-            .icon-close svg {
-                width: 20px;
-                height: 20px;
-            }
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Situs Sedang Diperbaiki</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      color: #333;
+    }
+    .container {
+      text-align: center;
+      background: white;
+      padding: 40px;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    h1 {
+      font-size: 2.5em;
+      margin-bottom: 20px;
+      color: #e74c3c;
+    }
+    p {
+      font-size: 1.2em;
+      margin-bottom: 30px;
+    }
+    .spinner {
+      border: 5px solid #f3f3f3;
+      border-top: 5px solid #3498db;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      animation: spin 1s linear infinite;
+      margin: 0 auto;
+    }
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+  </style>
 </head>
 <body>
-
-    <!-- Background Video -->
-    <video autoplay muted loop playsinline class="video-bg">
-        <source src="background.mp4" type="video/mp4">
-    </video>
-    <div class="overlay"></div>
-
-    <header>
-        <div class="header-container">
-            <!-- Foto Founder Kiri -->
-            <div class="founder-photo">
-                <img src="founder1.jpg" alt="Founder 1">
-            </div>
-
-            <!-- Logo / Judul -->
-            <div class="logo-container">
-                <h1>NEWLAND ROLEPLAY</h1>
-                <p class="subtitle">Server SAMP Roleplay Terkemuka — Realisme, Komunitas, dan Pengalaman Tak Terlupakan</p>
-
-                <!-- Ikon Close (X Merah dalam Lingkaran) -->
-                <div class="icon-close" onclick="alert('Ikon ditutup!')">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none">
-                        <circle cx="12" cy="12" r="10"/>
-                        <line x1="15" y1="9" x2="9" y2="15"/>
-                        <line x1="9" y1="9" x2="15" y2="15"/>
-                    </svg>
-                </div>
-            </div>
-
-            <!-- Foto Founder Kanan -->
-            <div class="founder-photo">
-                <img src="founder2.jpg" alt="Founder 2">
-            </div>
-        </div>
-    </header>
-
-    <div class="container">
-        <div class="card">
-            <h2>⚙️ Informasi Inti</h2>
-            <ul>
-                <li><span class="highlight">Registrasi</span> — Melalui UCP (User Control Panel)</li>
-                <li><span class="highlight">Komunikasi</span> — Voice Only (Discord)</li>
-                <li><span class="highlight">Mata Uang</span> — Dolar Amerika ($)</li>
-                <li><span class="highlight">Platform</span> — Android & PC (Full Support)</li>
-            </ul>
-        </div>
-
-        <div class="card">
-            <h2>👔 Faction Terbuka</h2>
-            <ul>
-                <li>👮 SAPD — Kepolisian Kota Newland</li>
-                <li>🏥 SAMD — Layanan Medis Darurat</li>
-                <li>🏢 Pemerintah Kota — Administrasi & Layanan Publik</li>
-                <li>🛒 Pedagang — Ekonomi Rakyat</li>
-                <li>🧰 Mechanic — Bengkel & Modifikasi Kendaraan</li>
-                <li>🔊 SANEWS — Media & Jurnalistik</li>
-            </ul>
-        </div>
-
-        <div class="card">
-            <h2>💼 Pekerjaan & Side Job</h2>
-            <ul>
-                <li>🛢️ Tukang Minyak • ⛏️ Penambang • 🚎 Supir Bus</li>
-                <li>🐓 Tukang Ayam • 🪵 Tukang Kayu • 🚢 Nelayan</li>
-                <li>🐄 Pemerah Sapi • 🧶 Penjahit • 📦 Recycler</li>
-                <li>🗑️ Trashmasher • 🌿 Mower • 🧹 Sweeper</li>
-                <li>📦 Delivery • 🏗️ Forklift Operator</li>
-            </ul>
-        </div>
-
-        <div class="card">
-            <h2>🎁 Starter Pack Warga Baru</h2>
-            <ul>
-                <li>💸 $10.000 Tunai</li>
-                <li>📱 1 Unit Handphone</li>
-                <li>🍱 10 Makanan & 10 Minuman</li>
-                <li>🏍️ Motor Sanchez (Kendaraan Awal)</li>
-            </ul>
-        </div>
-
-        <div class="link-box">
-            <a href="https://discord.gg/6HR4szqNFx" target="_blank" class="discord-btn">
-                🔗 JOIN DISCORD
-            </a>
-        </div>
-    </div>
-
-    <!-- Audio -->
-    <audio id="bgMusic" loop>
-        <source src="music.mp3" type="audio/mpeg">
-    </audio>
-    <button id="unmute-btn">🔊</button>
-
-    <footer>
-        &copy; 2025 Newland Roleplay — All Rights Reserved<br>
-        Not affiliated with Rockstar Games or San Andreas Multiplayer.
-    </footer>
-
-    <script>
-        const audio = document.getElementById('bgMusic');
-        const btn = document.getElementById('unmute-btn');
-
-        function tryPlay() {
-            audio.volume = 0.35;
-            return audio.play()
-                .then(() => {
-                    btn.style.display = 'none';
-                })
-                .catch(() => {
-                    btn.style.display = 'block';
-                });
-        }
-
-        window.addEventListener('load', tryPlay);
-        document.body.addEventListener('click', () => {
-            if (audio.paused) tryPlay();
-        });
-
-        btn.addEventListener('click', () => {
-            if (audio.paused) {
-                audio.play();
-                btn.textContent = '🔊';
-            } else {
-                audio.pause();
-                btn.textContent = '🔇';
-            }
-        });
-    </script>
+  <div class="container">
+    <h1>Website Sedang Diperbaiki</h1>
+    <p>Mohon maaf atas ketidaknyamanannya.<br>Kami sedang melakukan pemeliharaan dan akan segera kembali.</p>
+    <div class="spinner"></div>
+  </div>
 </body>
 </html>
