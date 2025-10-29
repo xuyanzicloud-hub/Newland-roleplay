@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Newland Roleplay</title>
 
-  <!-- Font & Animasi -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
 
   <style>
@@ -21,7 +20,7 @@
       overflow-x: hidden;
     }
 
-    /* ==== Background Video ==== */
+    /* Background Video */
     #bg-video {
       position: fixed;
       top: 0;
@@ -33,59 +32,55 @@
       filter: brightness(35%) contrast(120%);
     }
 
-    /* ==== Header ==== */
     header {
-      position: relative;
-      background: rgba(0, 0, 0, 0.6);
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 15px;
-      padding: 25px 40px;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.6);
-      backdrop-filter: blur(6px);
+      flex-wrap: wrap;
+      text-align: center;
+      padding: 25px;
+      background: rgba(0, 0, 0, 0.5);
+      backdrop-filter: blur(5px);
       animation: fadeDown 1.2s ease;
+      border-bottom: 1px solid rgba(255,255,255,0.15);
     }
 
     header img {
-      height: 70px;
-      width: 70px;
+      height: 90px;
+      width: 90px;
       border-radius: 50%;
       object-fit: cover;
-      box-shadow: 0 0 20px #00d4ff;
+      box-shadow: 0 0 25px #00d4ff;
+      margin-bottom: 10px;
       animation: float 3s ease-in-out infinite;
     }
 
     header h1 {
-      font-size: 2.8em;
+      font-size: 2.3em;
       color: #00d4ff;
-      text-shadow: 0 0 15px #00d4ff;
+      text-shadow: 0 0 20px #00d4ff;
       letter-spacing: 3px;
-      animation: glowText 3s infinite alternate;
     }
 
     header p {
       font-weight: 300;
-      color: #f0f0f0;
-      text-align: center;
-      width: 100%;
-      opacity: 0.9;
+      color: #dcdcdc;
+      margin-top: 6px;
     }
 
-    /* ==== Main ==== */
     main {
       max-width: 950px;
-      margin: 60px auto;
-      padding: 30px;
+      margin: 50px auto;
+      padding: 25px;
       background: rgba(0, 0, 0, 0.55);
       border-radius: 25px;
-      box-shadow: 0 0 25px rgba(0, 0, 0, 0.5);
-      backdrop-filter: blur(6px);
+      box-shadow: 0 0 30px rgba(0, 0, 0, 0.6);
+      backdrop-filter: blur(8px);
       animation: fadeUp 1.5s ease;
     }
 
     section {
-      margin-bottom: 50px;
+      margin-bottom: 45px;
       opacity: 0;
       transform: translateY(40px);
       transition: all 0.8s ease-out;
@@ -107,14 +102,16 @@
 
     ul {
       list-style: none;
-      margin-left: 25px;
+      margin-left: 20px;
     }
 
     li {
       margin: 6px 0;
       opacity: 0.95;
+      line-height: 1.5em;
     }
 
+    /* Tombol Discord */
     .discord-link {
       display: block;
       text-align: center;
@@ -127,7 +124,8 @@
       font-weight: bold;
       font-size: 1.1em;
       transition: 0.4s;
-      box-shadow: 0 0 20px #00d4ff;
+      box-shadow: 0 0 25px #00d4ff;
+      width: fit-content;
     }
 
     .discord-link:hover {
@@ -142,10 +140,10 @@
       opacity: 0.8;
       background: rgba(0,0,0,0.5);
       border-top: 1px solid rgba(255,255,255,0.2);
-      backdrop-filter: blur(4px);
+      backdrop-filter: blur(5px);
     }
 
-    /* ==== Tombol Musik ==== */
+    /* Musik Button */
     #music-control {
       position: fixed;
       bottom: 25px;
@@ -176,15 +174,9 @@
       fill: #00d4ff;
     }
 
-    /* ==== Animations ==== */
-    @keyframes glowText {
-      from { text-shadow: 0 0 10px #00d4ff; }
-      to { text-shadow: 0 0 30px #00d4ff; }
-    }
-
-    @keyframes float {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-5px); }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(40px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
     @keyframes fadeDown {
@@ -192,40 +184,16 @@
       to { opacity: 1; transform: translateY(0); }
     }
 
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(40px); }
-      to { opacity: 1; transform: translateY(0); }
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-6px); }
     }
 
     @media (max-width: 600px) {
-      header {
-        flex-direction: column;
-        text-align: center;
-      }
-
-      header img {
-        height: 80px;
-        width: 80px;
-      }
-
-      header h1 {
-        font-size: 2em;
-      }
-
-      main {
-        margin: 25px;
-        padding: 20px;
-      }
-
-      #music-control {
-        width: 55px;
-        height: 55px;
-      }
-
-      #music-control svg {
-        width: 22px;
-        height: 22px;
-      }
+      header h1 { font-size: 1.8em; }
+      main { margin: 20px; padding: 20px; }
+      #music-control { width: 55px; height: 55px; }
+      #music-control svg { width: 22px; height: 22px; }
     }
   </style>
 </head>
@@ -234,7 +202,6 @@
   <!-- Background Video -->
   <video autoplay muted loop id="bg-video">
     <source src="background.mp4" type="video/mp4">
-    Browser kamu tidak mendukung video HTML5.
   </video>
 
   <!-- Background Music -->
@@ -246,34 +213,6 @@
       <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
     </svg>
   </div>
-
-  <script>
-    // Musik Kontrol
-    const music = document.getElementById('bg-music');
-    const control = document.getElementById('music-control');
-    const icon = document.getElementById('music-icon');
-    music.volume = 0.2;
-
-    control.addEventListener('click', () => {
-      if (music.paused) {
-        music.play();
-        icon.innerHTML = '<path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>'; // pause
-      } else {
-        music.pause();
-        icon.innerHTML = '<path d="M8 5v14l11-7z"/>'; // play
-      }
-    });
-
-    // Animasi Scroll Fade-In
-    const sections = document.querySelectorAll('section');
-    window.addEventListener('scroll', () => {
-      const trigger = window.innerHeight * 0.85;
-      sections.forEach(sec => {
-        const top = sec.getBoundingClientRect().top;
-        if (top < trigger) sec.classList.add('visible');
-      });
-    });
-  </script>
 
   <header>
     <img src="logo.png" alt="Logo Newland Roleplay">
@@ -343,13 +282,56 @@
       </ul>
     </section>
 
-    <a class="discord-link" href="https://discord.gg/6HR4szqNFx" target="_blank">
-      🚀 GABUNG DISCORD KAMI
+    <a class="discord-link" id="discordJoin" target="_blank">
+      🚀 JOIN DISCORD SERVER
     </a>
   </main>
 
   <footer>
     © 2025 Newland Roleplay — Developed by Team NL-RP
   </footer>
+
+  <script>
+    // Musik kontrol
+    const music = document.getElementById('bg-music');
+    const control = document.getElementById('music-control');
+    const icon = document.getElementById('music-icon');
+    music.volume = 0.25;
+
+    control.addEventListener('click', () => {
+      if (music.paused) {
+        music.play();
+        icon.innerHTML = '<path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>'; // pause
+      } else {
+        music.pause();
+        icon.innerHTML = '<path d="M8 5v14l11-7z"/>'; // play
+      }
+    });
+
+    // Fade animasi scroll
+    const sections = document.querySelectorAll('section');
+    window.addEventListener('scroll', () => {
+      const trigger = window.innerHeight * 0.85;
+      sections.forEach(sec => {
+        const top = sec.getBoundingClientRect().top;
+        if (top < trigger) sec.classList.add('visible');
+      });
+    });
+
+    // Tombol Discord - langsung buka app di Android
+    const discordButton = document.getElementById('discordJoin');
+    const discordLink = "https://discord.gg/6HR4szqNFx";
+    const discordAppLink = "discord://discord.gg/6HR4szqNFx";
+
+    discordButton.addEventListener('click', () => {
+      const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+      if (isMobile) {
+        window.location.href = discordAppLink;
+        setTimeout(() => window.location.href = discordLink, 1000);
+      } else {
+        window.open(discordLink, "_blank");
+      }
+    });
+  </script>
 </body>
-</html>
+      </html>
