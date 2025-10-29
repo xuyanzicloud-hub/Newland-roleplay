@@ -4,9 +4,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Newland Roleplay</title>
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap');
 
+  <!-- Font & Animasi -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+
+  <style>
     * {
       margin: 0;
       padding: 0;
@@ -28,54 +30,70 @@
       height: 100%;
       object-fit: cover;
       z-index: -1;
-      filter: brightness(40%);
+      filter: brightness(35%) contrast(120%);
     }
 
     /* ==== Header ==== */
     header {
+      position: relative;
       background: rgba(0, 0, 0, 0.6);
       display: flex;
       align-items: center;
       justify-content: center;
       gap: 15px;
-      padding: 20px 40px;
-      text-align: center;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+      padding: 25px 40px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.6);
+      backdrop-filter: blur(6px);
+      animation: fadeDown 1.2s ease;
     }
 
     header img {
-      height: 60px;
-      width: 60px;
+      height: 70px;
+      width: 70px;
       border-radius: 50%;
       object-fit: cover;
-      box-shadow: 0 0 15px #00d4ff;
+      box-shadow: 0 0 20px #00d4ff;
+      animation: float 3s ease-in-out infinite;
     }
 
     header h1 {
-      font-size: 2.5em;
+      font-size: 2.8em;
       color: #00d4ff;
-      letter-spacing: 2px;
+      text-shadow: 0 0 15px #00d4ff;
+      letter-spacing: 3px;
+      animation: glowText 3s infinite alternate;
     }
 
     header p {
       font-weight: 300;
-      color: #fff;
+      color: #f0f0f0;
       text-align: center;
       width: 100%;
+      opacity: 0.9;
     }
 
     /* ==== Main ==== */
     main {
-      max-width: 900px;
-      margin: 40px auto;
-      padding: 20px;
-      background: rgba(0, 0, 0, 0.6);
-      border-radius: 20px;
-      box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
+      max-width: 950px;
+      margin: 60px auto;
+      padding: 30px;
+      background: rgba(0, 0, 0, 0.55);
+      border-radius: 25px;
+      box-shadow: 0 0 25px rgba(0, 0, 0, 0.5);
+      backdrop-filter: blur(6px);
+      animation: fadeUp 1.5s ease;
     }
 
     section {
-      margin-bottom: 40px;
+      margin-bottom: 50px;
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 0.8s ease-out;
+    }
+
+    section.visible {
+      opacity: 1;
+      transform: translateY(0);
     }
 
     h2 {
@@ -84,73 +102,99 @@
       border-bottom: 2px solid #00d4ff;
       display: inline-block;
       padding-bottom: 5px;
+      text-shadow: 0 0 10px #00d4ff;
     }
 
     ul {
       list-style: none;
-      margin-left: 20px;
+      margin-left: 25px;
     }
 
     li {
       margin: 6px 0;
+      opacity: 0.95;
     }
 
     .discord-link {
       display: block;
       text-align: center;
-      margin: 30px auto;
-      width: fit-content;
-      background: #5865F2;
+      margin: 40px auto;
+      background: linear-gradient(45deg, #5865F2, #00d4ff);
       color: white;
       text-decoration: none;
-      padding: 12px 25px;
-      border-radius: 10px;
+      padding: 14px 35px;
+      border-radius: 14px;
       font-weight: bold;
-      transition: 0.3s;
-      box-shadow: 0 0 10px #5865F2;
+      font-size: 1.1em;
+      transition: 0.4s;
+      box-shadow: 0 0 20px #00d4ff;
     }
 
     .discord-link:hover {
-      background: #4752c4;
-      transform: scale(1.05);
-      box-shadow: 0 0 20px #5865F2;
+      transform: scale(1.07);
+      box-shadow: 0 0 35px #00d4ff;
     }
 
     footer {
       text-align: center;
-      padding: 20px;
+      padding: 25px;
       font-size: 0.9em;
       opacity: 0.8;
+      background: rgba(0,0,0,0.5);
+      border-top: 1px solid rgba(255,255,255,0.2);
+      backdrop-filter: blur(4px);
     }
 
     /* ==== Tombol Musik ==== */
     #music-control {
       position: fixed;
-      bottom: 20px;
-      right: 20px;
+      bottom: 25px;
+      right: 25px;
       background: rgba(0,0,0,0.6);
       border: 2px solid #00d4ff;
       border-radius: 50%;
-      width: 60px;
-      height: 60px;
+      width: 65px;
+      height: 65px;
       display: flex;
       align-items: center;
       justify-content: center;
       cursor: pointer;
       transition: 0.3s;
-      box-shadow: 0 0 10px #00d4ff;
+      box-shadow: 0 0 20px #00d4ff;
       z-index: 10;
+      backdrop-filter: blur(6px);
     }
 
     #music-control:hover {
       transform: scale(1.1);
-      background: rgba(0,212,255,0.2);
+      background: rgba(0,212,255,0.25);
     }
 
     #music-control svg {
-      width: 28px;
-      height: 28px;
+      width: 30px;
+      height: 30px;
       fill: #00d4ff;
+    }
+
+    /* ==== Animations ==== */
+    @keyframes glowText {
+      from { text-shadow: 0 0 10px #00d4ff; }
+      to { text-shadow: 0 0 30px #00d4ff; }
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-5px); }
+    }
+
+    @keyframes fadeDown {
+      from { opacity: 0; transform: translateY(-40px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(40px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
     @media (max-width: 600px) {
@@ -160,22 +204,22 @@
       }
 
       header img {
-        height: 70px;
-        width: 70px;
+        height: 80px;
+        width: 80px;
       }
 
       header h1 {
-        font-size: 1.8em;
+        font-size: 2em;
       }
 
       main {
-        margin: 20px;
-        padding: 15px;
+        margin: 25px;
+        padding: 20px;
       }
 
       #music-control {
-        width: 50px;
-        height: 50px;
+        width: 55px;
+        height: 55px;
       }
 
       #music-control svg {
@@ -204,20 +248,30 @@
   </div>
 
   <script>
+    // Musik Kontrol
     const music = document.getElementById('bg-music');
     const control = document.getElementById('music-control');
     const icon = document.getElementById('music-icon');
-
     music.volume = 0.2;
 
     control.addEventListener('click', () => {
       if (music.paused) {
         music.play();
-        icon.innerHTML = '<path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>'; // pause icon
+        icon.innerHTML = '<path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>'; // pause
       } else {
         music.pause();
-        icon.innerHTML = '<path d="M8 5v14l11-7z"/>'; // play icon
+        icon.innerHTML = '<path d="M8 5v14l11-7z"/>'; // play
       }
+    });
+
+    // Animasi Scroll Fade-In
+    const sections = document.querySelectorAll('section');
+    window.addEventListener('scroll', () => {
+      const trigger = window.innerHeight * 0.85;
+      sections.forEach(sec => {
+        const top = sec.getBoundingClientRect().top;
+        if (top < trigger) sec.classList.add('visible');
+      });
     });
   </script>
 
