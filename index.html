@@ -36,12 +36,51 @@
             z-index: -2;
         }
 
-        /* Header */
+        /* Header dengan Foto Founder */
         header {
             text-align: center;
             padding: 5rem 1.5rem 3rem;
             position: relative;
             z-index: 10;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .header-container {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .founder-photo {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            border: 3px solid rgba(255, 255, 255, 0.8);
+            overflow: hidden;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+        }
+
+        .founder-photo:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 30px rgba(255, 215, 0, 0.7);
+        }
+
+        .founder-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .logo-container {
+            text-align: center;
+            flex-grow: 1;
         }
 
         h1 {
@@ -53,8 +92,9 @@
             background-clip: text;
             color: transparent;
             text-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
-            margin-bottom: 1rem;
+            margin-bottom: 0.5rem;
             letter-spacing: 1.5px;
+            line-height: 1.1;
         }
 
         .subtitle {
@@ -63,6 +103,7 @@
             margin: 0 auto;
             color: #f8f8f8;
             opacity: 0.9;
+            text-shadow: 0 2px 5px rgba(0,0,0,0.3);
         }
 
         /* Container */
@@ -227,6 +268,8 @@
         @media (max-width: 768px) {
             h1 { font-size: 2.8rem; }
             .subtitle { font-size: 1.1rem; }
+            .header-container { flex-direction: column; gap: 1rem; }
+            .founder-photo { width: 100px; height: 100px; }
             .card { padding: 1.5rem; }
             .discord-btn { padding: 0.9rem 2rem; font-size: 1.1rem; }
         }
@@ -241,18 +284,33 @@
     <div class="overlay"></div>
 
     <header>
-        <h1>NEWLAND ROLEPLAY</h1>
-        <p class="subtitle">Server SAMP Roleplay Terkemuka — Realisme, Komunitas, dan Pengalaman Tak Terlupakan</p>
+        <div class="header-container">
+            <!-- Foto Founder Kiri -->
+            <div class="founder-photo">
+                <img src="founder1.jpg" alt="Founder 1">
+            </div>
+
+            <!-- Logo / Judul -->
+            <div class="logo-container">
+                <h1>NEWLAND ROLEPLAY</h1>
+                <p class="subtitle">Server SAMP Roleplay Terkemuka — Realisme, Komunitas, dan Pengalaman Tak Terlupakan</p>
+            </div>
+
+            <!-- Foto Founder Kanan -->
+            <div class="founder-photo">
+                <img src="founder2.jpg" alt="Founder 2">
+            </div>
+        </div>
     </header>
 
     <div class="container">
         <div class="card">
             <h2>⚙️ Informasi Inti</h2>
             <ul>
-                <li><span class="highlight">Registrasi</span> — Melalui UCP</li>
+                <li><span class="highlight">Registrasi</span> — Melalui UCP (User Control Panel)</li>
                 <li><span class="highlight">Komunikasi</span> — Voice Only (Discord)</li>
                 <li><span class="highlight">Mata Uang</span> — Dolar Amerika ($)</li>
-                <li><span class="highlight">Platform</span> — Android & PC</li>
+                <li><span class="highlight">Platform</span> — Android & PC (Full Support)</li>
             </ul>
         </div>
 
